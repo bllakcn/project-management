@@ -1,0 +1,10 @@
+.verification-page{
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 4px;
+}
+.verification-page .verification-header p{
+  font-size: 1rem;
+  font-weight: 300;
+  padding-top: 2rem;
+}

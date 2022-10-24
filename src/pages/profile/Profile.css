@@ -1,0 +1,101 @@
+.profile {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 4px;
+  min-height: 20rem;
+}
+.profile-header{
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+.profile .profile-content {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-between
+}
+.profile .bio-header{
+  display: flex;;
+  align-items: center;
+  gap: 1rem;
+}
+.profile .profile-bio-text{
+  padding: 1rem 0;
+  color: var(--text-color);
+  line-height: 1.5em;
+  font-size: 0.9em;
+  white-space: pre-line;
+}
+.bio-form{
+  padding: 1rem 0;
+  margin: -2rem -0.45rem;
+  position: relative;
+}
+.bio-edit{
+  width: 16rem;
+  resize: none;
+  font-family: Poppins, sans-serif;
+  color: var(--text-color);
+  line-height: 1.5em;
+  font-size: .9em;
+  outline: none;
+}
+.save{
+  position: absolute;
+  bottom: 3.5rem;
+  left: 14.5rem ;
+}
+
+.profile-contact{
+  margin-top: -5rem;
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.contact-header{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.profile-contact .icon-items{
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .9rem;
+}
+.inactive-icon svg{
+  filter: opacity(.3);
+  cursor: auto;
+}
+.icon-item svg {
+  color: var(--heading-color);
+}
+.icon-item{
+  display: flex;
+  align-items: center;
+  gap: 1rem;  
+}
+.icon-item .icon-edit{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 600;
+  font-size: .9rem;
+  cursor: pointer;
+}
+.icon-item a {
+  color: inherit;
+}
+.icon-edit label {
+  margin: 0;
+}
+.icon-edit input {
+  height: 1.5rem;
+  width: 7  rem;
+}
+.icon-item .icon-edit.hidden{
+  visibility: hidden;
+  
+}
