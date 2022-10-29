@@ -3,6 +3,7 @@ import { useAuthContext } from './hooks/useAuthContext';
 
 import Dashboard from './pages/dashboard/Dashboard'
 import Create from './pages/create/Create'
+import CreateTeam from './pages/createTeam/CreateTeam'
 import Login from './pages/login/Login'
 import Signup from './pages/signup/Signup'
 import Project from './pages/project/Project'
@@ -30,6 +31,7 @@ function App() {
               <Route element={!user ? <Signup/> : <Dashboard/>} path='/signup'/>
               <Route element={user ? <Profile/> : <Login/>} path='/profile/:id'/>
               <Route element={user ? <Create/> : <Login/>} path='/create'/>
+              <Route element={user ? <CreateTeam/> : <Login/>} path='/createateam'/>
               <Route element={user ? <Project/> : <Login/>} path='/projects/:id'/>
               <Route element={user ? <Verification/> : <Login/>} path='/emailverification'/>
             </Routes>

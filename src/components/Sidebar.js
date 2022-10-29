@@ -1,10 +1,8 @@
 import './Sidebar.css'
 import { NavLink } from 'react-router-dom'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import DisplayAvatar from './DisplayAvatar'
-
-import DashboardIcon from '../assets/dashboard_icon.svg'
-import AddIcon from '../assets/add_icon.svg'
 
 
 export default function Sidebar() {
@@ -21,14 +19,20 @@ export default function Sidebar() {
           <ul>
             <li>
               <NavLink to='/' end>
-                <img src={DashboardIcon} alt="dashboard icon" />
+                <FontAwesomeIcon inverse size='sm' icon="fa-solid fa-table-columns" />
                 <span>Dashboard</span>
               </NavLink>
             </li>
             <li>
               <NavLink to='/create'>
-                <img src={AddIcon} alt="add project icon" />
+                <FontAwesomeIcon inverse size='sm' icon="fa-solid fa-plus" />
                 <span>New Project</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/createateam'>
+                <FontAwesomeIcon inverse size='sm' icon="fa-solid fa-plus" />
+                <span>New Team</span>
               </NavLink>
             </li>
           </ul>

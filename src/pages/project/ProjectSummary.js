@@ -2,20 +2,35 @@ import { useState, useEffect } from 'react'
 import { useFirestore } from '../../hooks/useFirestore'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useNavigate } from 'react-router-dom'
+import { useCollection } from '../../hooks/useCollection'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import DisplayAvatar from '../../components/DisplayAvatar'
 
 export default function ProjectSummary({ project }) {
   const { updateDocument } = useFirestore('projects')
+  // const { documents:teamsDocument } = useCollection('teams')
+  const { documents:usersDocument } = useCollection('users')
   const { user } = useAuthContext()
   const navigate = useNavigate()
   const [isOwner, setIsOwner] = useState(false)
   const [isEditDetails, setIsEditDetails] = useState(false)
   const [editedDetails, setEditedDetails] = useState(project.details)
+  const [assignees, setAssignees] = useState([])
 
   useEffect(() => {
     setIsOwner(user.uid === project.createdBy.id ? true : false)
   }, [user, project])
+
+  useEffect(() => {
+    if(usersDocument && project && project.assignedUsersList[0].type === 'team'){
+      const assignees = usersDocument.filter((u) => {
+        return u.teams.includes(project.assignedUsersList[0].displayName)
+      }) 
+      setAssignees([...assignees])
+    } else {
+      setAssignees([...project.assignedUsersList])
+    }
+  },[usersDocument, project])
 
   //change the isCompleted prop to true
   const handleClick = async () => {
@@ -65,12 +80,13 @@ export default function ProjectSummary({ project }) {
         <h4>Project is assigned to:</h4>
         <div className='project-footer'>
           <div className='assigned-users'>
-            {project.assignedUsersList.map(user => (
+            {assignees.map(user => (
               <div className='assigned-user' key={user.id}>
                 <DisplayAvatar name={user.displayName} size='50'/>
                 <h4 className='username' >{user.displayName}</h4>
               </div>
           ))}
+          
           </div>
           {!project.isCompleted && (<>
             {user.uid === project.createdBy.id && (

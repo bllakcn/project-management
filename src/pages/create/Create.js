@@ -23,7 +23,8 @@ export default function Create() {
   const [assignedUsers, setAssignedUsers] = useState([])
   const [formError, setFormError] = useState(null)
 
-  const { documents } = useCollection('users')
+  const { documents:usersDocument } = useCollection('users')
+  const { documents:teamsDocument } = useCollection('teams')
   const [users, setUsers] = useState([])
   const { user } = useAuthContext()
 
@@ -31,13 +32,14 @@ export default function Create() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if(documents){
-      const options = documents.map(user => {
-        return { value: user, label: user.displayName }
+    if(usersDocument && teamsDocument){
+      const optionsList = [...usersDocument,...teamsDocument]
+      const options = optionsList.map(option => {
+        return { value: option, label: option.displayName }
       })
       setUsers(options)
     }
-  }, [documents])
+  }, [usersDocument, teamsDocument])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -59,7 +61,8 @@ export default function Create() {
     const assignedUsersList = assignedUsers.map((u) => {
       return{
         displayName: u.value.displayName,
-        id: u.value.id
+        id: u.value.id,
+        type: u.value.type
       }
     })
 
