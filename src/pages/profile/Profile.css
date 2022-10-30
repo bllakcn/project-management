@@ -96,6 +96,17 @@
   width: 7  rem;
 }
 .icon-item .icon-edit.hidden{
-  visibility: hidden;
-  
+  visibility: hidden; 
+}
+
+.team-items{
+  list-style: circle;
+  padding: 0 1rem;
+}
+.team-item{
+  padding: 1rem 0;
+  color: var(--text-color);
+  line-height: 1.5em;
+  font-size: 0.9em;
+  white-space: pre-line;
 }
