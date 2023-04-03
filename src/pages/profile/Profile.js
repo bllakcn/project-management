@@ -12,7 +12,7 @@ import ProfileBio from './ProfileBio'
 import './Profile.css'
 
 export default function Profile() {
-  const profileUser = useRef()
+  const profileUser = useRef() // change to state
   const { id } = useParams() // user id of the profile
   const { user } = useAuthContext()
   const { document } = useDocument('users', id) // auth user
